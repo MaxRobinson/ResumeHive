@@ -5,30 +5,30 @@
    <title>Resume Hive - Resumes for days</title>
    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
    <script src="js/app.js"></script>
+    <link rel="stylesheet" href="css/cover.css">
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 </head>
 <body ng-controller="MainPageController">
    
-    <div class="jumbotron">
-        <div class="container">
+<div class="site-wrapper jumbotron">
 
-            <h1>Resume Hive</h1>
-            <p>This webpage allows you to ...</p>
-            <div id="searchBar">
-
-                <input type="text" ng-model="searchInput" class="btn-sm" placeholder="">
-                <button type="button" class="btn btn-lg btn-info">Search</button>
-            </div>
+        <h1>Resume Hive</h1>
+        <p>Find the right person.</p>
+        <div id="searchBar">
+          <form ng-submit="search()" >
+            <input type="text" ng-model="text" name="search" class="btn-sm" placeholder="Type-in a job title." autofocus>
+            <input type="submit" name="submit" class="btn btn-lg btn-info" value="Search"/>
+          </form>
         </div>
-    </div>
-    <div class="container">
-        <div class="category">
-            <h2 class="categoryTitle">Heading2</h2>
-            <div class="categoryContent">text</div>  
-            <hr>      
-        </div>
-        
 
     </div>
+<div class="content">
+   <div ng-repeat="item in data">
+     <p class="fileName">{{item.name}}</p>
+     <p><span class="label label-warning">{{item.category}}</span></p>
+      <a href="pdfs/{{item.category}}/{{item.name}}.pdf" data-lightbox="roadtrip">
+      <img ng-src="pdfs/{{item.category}}/{{item.name}}.jpg"  class="img-thumbnail"></a>
+   </div>
+</div>
 </body>
 </html>
