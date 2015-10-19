@@ -1,6 +1,5 @@
 <?php
    header('Content-type: application/json');
-   $searchTerm = $_GET["term"];
 
    $servername = "rhdb.shdh.ca";
    $username = "rhdb";
@@ -8,6 +7,8 @@
    $db = "resumehive";
 
    $conn = new mysqli($servername, $username, $password, $db);
+
+   $searchTerm = mysqli_real_escape_string($conn, $_GET["term"]);
 
    if($conn->connect_error){
       die("Connection failed: " .$conn->connect_error);
